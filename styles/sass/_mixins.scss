@@ -1,0 +1,10 @@
+@mixin p-m-normal {
+  padding: 5px 20px;
+  margin: 2px;
+}
+
+@mixin flex-space-between{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}

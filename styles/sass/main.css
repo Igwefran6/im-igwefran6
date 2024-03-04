@@ -1,0 +1,41 @@
+@font-face {
+  font-family: kaushan;
+  src: "";
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.light {
+  background: #F5F3F5;
+}
+
+.dark {
+  background: #302B27;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 20px;
+  border-bottom: 1px solid #302B27;
+}
+nav button {
+  padding: 5px 10px;
+}
+nav .logo {
+  font-size: 1.5rem;
+}
+nav .logo span {
+  font-size: 1rem;
+  font-family: kaushan;
+}
+
+/*# sourceMappingURL=main.css.map */
