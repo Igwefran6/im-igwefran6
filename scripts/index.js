@@ -4,7 +4,7 @@ let closeBtn = document.querySelector("#close-btn");
 let menuOpened = false;
 let moveRight = "-400%, 400%";
 let moveLeft = "400%, 400%";
-let movement;
+let movement = moveRight;
 let moved = false;
 
 menuBtn.addEventListener("click", () => {
