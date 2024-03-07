@@ -1,11 +1,30 @@
 let menuBtn = document.querySelector(".menu-btn");
 let menuDialog = document.querySelector(".menu-dialog");
 let closeBtn = document.querySelector("#close-btn");
+let scrollToPage = document.querySelectorAll(".scroll-to ul li");
+let menuDialogList = document.querySelectorAll(".menu-dialog ul li");
 let menuOpened = false;
 let moveRight = "-400%, 400%";
 let moveLeft = "400%, 400%";
 let movement = moveRight;
 let moved = false;
+
+menuDialogList.forEach(item=>{
+  activateBtn(item, menuDialogList)
+})
+scrollToPage.forEach(item => {
+    activateBtn(item, scrollToPage)
+});
+
+
+function activateBtn(item, myItem) {
+  item.addEventListener("click", button => {
+         myItem.forEach(event =>{
+           event.classList.remove("active-button")
+        })
+         button.target.classList.add("active-button")
+    });
+}
 
 menuBtn.addEventListener("click", () => {
     if (!menuOpened) {

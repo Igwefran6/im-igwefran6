@@ -71,17 +71,13 @@ nav {
             padding: 5px;
             background: rgba($color: $text-light, $alpha: 1);
             border-radius: 10px 10px 0 0;
-
             li {
                 padding: 10px 20px;
                 border-radius: 10px;
-                color: $text-light;
                 font-weight: bold;
-                background: #777;
-                &.active {
-                    background: $primary-light;
-                    color: $text-light;
-                }
+                border: 2px solid $primary-light;
+                color: $text-dark-light;
+                transition: background 0.3s ease-in-out;
             }
         }
     }
@@ -104,10 +100,12 @@ nav {
             gap: 10px;
             position: relative;
             li {
-                padding: 10px;
-                background: $primary-light;
-                border-radius: 0 10px 10px 0;
+                padding: 10px 20px;
+                border-radius: 10px;
                 font-weight: bold;
+                border: 2px solid $primary-light;
+                color: $text-dark-light;
+                transition: background 0.3s ease-in-out;
             }
         }
         button {
@@ -121,6 +119,15 @@ nav {
             border: 1px solid white;
         }
     }
+}
+
+.active-button {
+    background: $primary-light;
+    color: $text-light !important;
+}
+
+.rotate45deg{
+  transform: rotate(45deg);
 }
 
 .flex-size {

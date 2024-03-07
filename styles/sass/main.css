@@ -72,13 +72,10 @@ nav .scroll-to ul {
 nav .scroll-to ul li {
   padding: 10px 20px;
   border-radius: 10px;
-  color: #F5F3F5;
   font-weight: bold;
-  background: #777;
-}
-nav .scroll-to ul li.active {
-  background: #346148;
-  color: #F5F3F5;
+  border: 2px solid #346148;
+  color: #444444;
+  transition: background 0.3s ease-in-out;
 }
 nav .menu-dialog {
   position: fixed;
@@ -100,10 +97,12 @@ nav .menu-dialog ul {
   position: relative;
 }
 nav .menu-dialog ul li {
-  padding: 10px;
-  background: #346148;
-  border-radius: 0 10px 10px 0;
+  padding: 10px 20px;
+  border-radius: 10px;
   font-weight: bold;
+  border: 2px solid #346148;
+  color: #444444;
+  transition: background 0.3s ease-in-out;
 }
 nav .menu-dialog button {
   position: absolute;
@@ -114,6 +113,15 @@ nav .menu-dialog button {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid white;
+}
+
+.active-button {
+  background: #346148;
+  color: #F5F3F5 !important;
+}
+
+.rotate45deg {
+  transform: rotate(45deg);
 }
 
 .flex-size {
