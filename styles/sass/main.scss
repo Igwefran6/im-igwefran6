@@ -1,10 +1,15 @@
 @import "_variables";
 @import "_mixins";
+@font-face {
+  font-family: 'kaushan';
+  src: url('../../assets/fonts/kaushan/KaushanScript-Regular.otf') format('opentype');
+}
 
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding: 0  ;
+
 }
 
 body {
@@ -52,9 +57,11 @@ nav {
     }
 
     .logo {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
         color: $text-dark-light;
         pointer-events: none;
+        font-family: kaushan;
+        
     }
 
     .scroll-to {
@@ -126,8 +133,12 @@ nav {
     color: $text-light !important;
 }
 
-.rotate45deg{
-  transform: rotate(45deg);
+.menu-btn {
+    transition: transform 0.3s ease-in-out;
+}
+
+.rotate90deg {
+    transform: rotate(90deg);
 }
 
 .flex-size {
@@ -180,6 +191,37 @@ nav {
     fill: #ffffff;
 }
 
+.menu-desktop {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+}
+
+.desktop-menus {
+    display: flex;
+    list-style-type: none;
+    font-size: 1.1rem;
+    gap: 4px;
+    border-radius: 10px;
+    
+    background: rgba($color: #000000, $alpha: .1);
+    border: 2px solid $text-light;
+    padding: 10px;
+    
+    li {
+        padding: 5px;
+        color: black;
+        border: 2px solid $primary-light;
+        transition: all .3s ease-in-out;
+
+        &:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+        &:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+    }
+}
 @media (max-width: 767px) {
     .wave svg {
         width: calc(215% + 1.3px);
@@ -191,6 +233,9 @@ nav {
             font-size: 1.1rem;
         }
     }
+    .desktop-menus {
+        display: none;
+    }
 }
 
 @media (min-width: 767px) {
@@ -201,6 +246,19 @@ nav {
         display: grid;
         gap: 80px;
         grid-template-columns: auto 1fr;
+    }
+
+    .about-me-text {
+        border-right: 2px solid $text-light;
+        padding-right: 5px;
+    }
+    .menu-desktop {
+        border: none;
+        font-weight: normal;
+    }
+
+    .menu-btn {
+        display: none;
     }
     .igwefran6-image {
         align-self: center;

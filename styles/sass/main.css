@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "kaushan";
+  src: url("../../assets/fonts/kaushan/KaushanScript-Regular.otf") format("opentype");
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -49,9 +53,10 @@ nav .share-page {
   padding: 10px;
 }
 nav .logo {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   color: #444444;
   pointer-events: none;
+  font-family: kaushan;
 }
 nav .scroll-to {
   position: fixed;
@@ -120,8 +125,12 @@ nav .menu-dialog button {
   color: #F5F3F5 !important;
 }
 
-.rotate45deg {
-  transform: rotate(45deg);
+.menu-btn {
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate90deg {
+  transform: rotate(90deg);
 }
 
 .flex-size {
@@ -173,6 +182,35 @@ nav .menu-dialog button {
   fill: #ffffff;
 }
 
+.menu-desktop {
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+}
+
+.desktop-menus {
+  display: flex;
+  list-style-type: none;
+  font-size: 1.1rem;
+  gap: 4px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid #F5F3F5;
+  padding: 10px;
+}
+.desktop-menus li {
+  padding: 5px;
+  color: black;
+  border: 2px solid #346148;
+  transition: all 0.3s ease-in-out;
+}
+.desktop-menus li:first-child {
+  border-radius: 10px 0 0 10px;
+}
+.desktop-menus li:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
 @media (max-width: 767px) {
   .wave svg {
     width: calc(215% + 1.3px);
@@ -184,6 +222,9 @@ nav .menu-dialog button {
   .logo span {
     font-size: 1.1rem;
   }
+  .desktop-menus {
+    display: none;
+  }
 }
 @media (min-width: 767px) {
   section {
@@ -193,6 +234,17 @@ nav .menu-dialog button {
     display: grid;
     gap: 80px;
     grid-template-columns: auto 1fr;
+  }
+  .about-me-text {
+    border-right: 2px solid #F5F3F5;
+    padding-right: 5px;
+  }
+  .menu-desktop {
+    border: none;
+    font-weight: normal;
+  }
+  .menu-btn {
+    display: none;
   }
   .igwefran6-image {
     align-self: center;
