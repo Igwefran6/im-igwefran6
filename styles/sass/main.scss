@@ -188,20 +188,16 @@ nav {
         border-radius: 10px;
         border: 2px solid $text-light;
         position: relative;
-        transition: transform .5s ease-in-out 2s;
-        &:nth-child(odd){
+        transition: transform .5s ease-in-out;
+        &{
                   &:hover{
-          transform: rotate(8deg);
+          transform: translateY(-20px);
           z-index: 4;
-          transition: transform .5s ease-in-out 0s;
+          transition: all .3s ease-in-out 0s;
+          outline: 2px solid $text-light;
+          outline-offset: 2px;
         }
-        }
-        &:nth-child(even){
-                  &:hover{
-          transform: rotate(-4deg);
-          z-index: 4;
-          transition: transform .5s ease-in-out 0s;
-        }
+        
         }
 
         img {
@@ -246,6 +242,54 @@ nav {
             }
         }
     }
+}
+
+form{
+  margin-top: 20px;
+  z-index: 2;
+  padding: 20px;
+  background: grey;
+  border-radius: 10px;
+  border: 2px solid $text-light;
+  input, textarea{
+    width: 100%;
+    padding: 5px;
+    background: $text-light;
+    border: none;
+    border-radius: 5px 5px 0 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: rgba($color: $text-dark-light, $alpha: .8);
+    
+  }
+  label{
+    font-weight: bold;
+    margin: 6px 0 2px 0;
+    display: inline-block;
+    span{
+      color: red;
+      font-size: 1rem;
+      margin-left: 4px;
+      display: inline-block;
+    }
+  }
+  label:first-child{
+    margin-top: 0;
+  }
+  .btn{
+    border: 2px solid $text-light;
+    width: 60%;
+    padding: 7px 14px;
+    background: $primary-light;
+    color: $text-light;
+    margin-top: 8px;
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+footer{
+  background: rgba($color: #222222, $alpha: 1);
+  min-height: 80px;
 }
 
 .wave {
@@ -324,11 +368,14 @@ nav {
         display: grid;
         gap: 80px;
         grid-template-columns: auto 1fr;
+        
     }
 
     .about-me-text {
         border-right: 2px solid $text-light;
         padding-right: 5px;
+        padding-right: 20px;
+        
     }
     .menu-desktop {
         border: none;
@@ -345,6 +392,7 @@ nav {
         position: relative;
         width: 200px;
         height: 200px;
+        margin-left: 10px;
         img {
             width: 100%;
             height: auto;
@@ -389,6 +437,9 @@ nav {
     }
     .menu-dialog {
         display: none;
+    }
+    form{
+      width: 400px;
     }
 }
 

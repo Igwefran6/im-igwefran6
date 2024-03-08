@@ -181,17 +181,14 @@ nav .menu-dialog button {
   border-radius: 10px;
   border: 2px solid #F5F3F5;
   position: relative;
-  transition: transform 0.5s ease-in-out 2s;
+  transition: transform 0.5s ease-in-out;
 }
-.grid-project div:nth-child(odd):hover {
-  transform: rotate(8deg);
+.grid-project div:hover {
+  transform: translateY(-20px);
   z-index: 4;
-  transition: transform 0.5s ease-in-out 0s;
-}
-.grid-project div:nth-child(even):hover {
-  transform: rotate(-4deg);
-  z-index: 4;
-  transition: transform 0.5s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  outline: 2px solid #F5F3F5;
+  outline-offset: 2px;
 }
 .grid-project div img {
   width: 100%;
@@ -233,6 +230,53 @@ nav .menu-dialog button {
 }
 .grid-project div .project-title:hover {
   text-decoration-color: #F5F3F5;
+}
+
+form {
+  margin-top: 20px;
+  z-index: 2;
+  padding: 20px;
+  background: grey;
+  border-radius: 10px;
+  border: 2px solid #F5F3F5;
+}
+form input, form textarea {
+  width: 100%;
+  padding: 5px;
+  background: #F5F3F5;
+  border: none;
+  border-radius: 5px 5px 0 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: rgba(68, 68, 68, 0.8);
+}
+form label {
+  font-weight: bold;
+  margin: 6px 0 2px 0;
+  display: inline-block;
+}
+form label span {
+  color: red;
+  font-size: 1rem;
+  margin-left: 4px;
+  display: inline-block;
+}
+form label:first-child {
+  margin-top: 0;
+}
+form .btn {
+  border: 2px solid #F5F3F5;
+  width: 60%;
+  padding: 7px 14px;
+  background: #346148;
+  color: #F5F3F5;
+  margin-top: 8px;
+  border-radius: 0 0 5px 5px;
+}
+
+footer {
+  background: #222222;
+  min-height: 80px;
 }
 
 .wave {
@@ -311,6 +355,7 @@ nav .menu-dialog button {
   .about-me-text {
     border-right: 2px solid #F5F3F5;
     padding-right: 5px;
+    padding-right: 20px;
   }
   .menu-desktop {
     border: none;
@@ -326,6 +371,7 @@ nav .menu-dialog button {
     position: relative;
     width: 200px;
     height: 200px;
+    margin-left: 10px;
   }
   .igwefran6-image img {
     width: 100%;
@@ -369,6 +415,9 @@ nav .menu-dialog button {
   }
   .menu-dialog {
     display: none;
+  }
+  form {
+    width: 400px;
   }
 }
 @media (min-width: 1200px) {
