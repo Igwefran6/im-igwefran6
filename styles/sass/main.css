@@ -28,11 +28,15 @@ header {
 
 section {
   padding: 30px;
-  margin-top: 120px;
+  margin-top: 20px;
 }
 section p {
   font-size: 1.1rem;
   margin-top: 25px;
+}
+
+section:first-child {
+  margin-top: 120px;
 }
 
 nav {
@@ -120,6 +124,10 @@ nav .menu-dialog button {
   border: 1px solid white;
 }
 
+.share-page {
+  transition: all 0.3s ease-in-out;
+}
+
 .active-button {
   background: #346148;
   color: #F5F3F5 !important;
@@ -133,7 +141,7 @@ nav .menu-dialog button {
   transform: rotate(90deg);
 }
 
-.flex-size {
+.grid-about-me {
   display: block;
 }
 
@@ -157,6 +165,74 @@ nav .menu-dialog button {
 .igwefran6-image .img-emoji-2,
 .igwefran6-image .img-emoji-3 {
   display: none;
+}
+
+.grid-project {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 10px;
+  margin-top: 40px;
+}
+.grid-project div {
+  font-size: 30px;
+  color: #ffffff;
+  text-align: center;
+  min-height: 250px;
+  border-radius: 10px;
+  border: 2px solid #F5F3F5;
+  position: relative;
+  transition: transform 0.5s ease-in-out 2s;
+}
+.grid-project div:nth-child(odd):hover {
+  transform: rotate(8deg);
+  z-index: 4;
+  transition: transform 0.5s ease-in-out 0s;
+}
+.grid-project div:nth-child(even):hover {
+  transform: rotate(-4deg);
+  z-index: 4;
+  transition: transform 0.5s ease-in-out 0s;
+}
+.grid-project div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+}
+.grid-project div button {
+  position: absolute;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: 2px solid #F5F3F5;
+  background: #346148;
+  color: #F5F3F5;
+  transition: padding 0.3s ease-in-out;
+}
+.grid-project div button:hover {
+  padding: 16px 32px;
+}
+.grid-project div .btn-demo {
+  bottom: 20px;
+  left: 20px;
+  border-radius: 10px 0 0 10px;
+}
+.grid-project div .btn-source-code {
+  bottom: 20px;
+  right: 20px;
+  border-radius: 0 10px 10px 0;
+}
+.grid-project div .project-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 40px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+.grid-project div .project-title:hover {
+  text-decoration-color: #F5F3F5;
 }
 
 .wave {
@@ -227,10 +303,7 @@ nav .menu-dialog button {
   }
 }
 @media (min-width: 767px) {
-  section {
-    margin-top: 20px;
-  }
-  .flex-size {
+  .grid-about-me {
     display: grid;
     gap: 80px;
     grid-template-columns: auto 1fr;
@@ -298,10 +371,10 @@ nav .menu-dialog button {
     display: none;
   }
 }
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
   body {
     margin: auto;
-    max-width: 1400px;
+    max-width: 1200px;
     min-height: 100vh;
     box-shadow: 1px 1px 5px #F5F3F5;
   }

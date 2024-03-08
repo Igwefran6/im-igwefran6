@@ -1,15 +1,15 @@
 @import "_variables";
 @import "_mixins";
 @font-face {
-  font-family: 'kaushan';
-  src: url('../../assets/fonts/kaushan/KaushanScript-Regular.otf') format('opentype');
+    font-family: "kaushan";
+    src: url("../../assets/fonts/kaushan/KaushanScript-Regular.otf")
+        format("opentype");
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
-    padding: 0  ;
-
+    padding: 0;
 }
 
 body {
@@ -32,12 +32,16 @@ header {
 
 section {
     padding: 30px;
-    margin-top: 120px;
+    margin-top: 20px;
 
     p {
         font-size: 1.1rem;
         margin-top: 25px;
     }
+}
+
+section:first-child{
+  margin-top: 120px;
 }
 
 nav {
@@ -61,7 +65,6 @@ nav {
         color: $text-dark-light;
         pointer-events: none;
         font-family: kaushan;
-        
     }
 
     .scroll-to {
@@ -128,6 +131,10 @@ nav {
     }
 }
 
+.share-page {
+    transition: all 0.3s ease-in-out;
+}
+
 .active-button {
     background: $primary-light;
     color: $text-light !important;
@@ -141,7 +148,7 @@ nav {
     transform: rotate(90deg);
 }
 
-.flex-size {
+.grid-about-me {
     display: block;
 }
 
@@ -165,6 +172,79 @@ nav {
     .img-emoji-2,
     .img-emoji-3 {
         display: none;
+    }
+}
+
+.grid-project {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 10px;
+    margin-top: 40px;
+    div {
+        font-size: 30px;
+        color: #ffffff;
+        text-align: center;
+        min-height: 250px;
+        border-radius: 10px;
+        border: 2px solid $text-light;
+        position: relative;
+        transition: transform .5s ease-in-out 2s;
+        &:nth-child(odd){
+                  &:hover{
+          transform: rotate(8deg);
+          z-index: 4;
+          transition: transform .5s ease-in-out 0s;
+        }
+        }
+        &:nth-child(even){
+                  &:hover{
+          transform: rotate(-4deg);
+          z-index: 4;
+          transition: transform .5s ease-in-out 0s;
+        }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 8px;
+        }
+        button {
+            position: absolute;
+            padding: 10px 20px;
+            font-weight: bold;
+            border: 2px solid $text-light;
+            background: $primary-light;
+            color: $text-light;
+            transition: padding 0.3s ease-in-out;
+            &:hover {
+                padding: 16px 32px;
+            }
+        }
+        .btn-demo {
+            bottom: 20px;
+            left: 20px;
+            border-radius: 10px 0 0 10px;
+        }
+        .btn-source-code {
+            bottom: 20px;
+            right: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+        .project-title {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            height: 40px;
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                text-decoration-color: $text-light;
+            }
+        }
     }
 }
 
@@ -203,16 +283,16 @@ nav {
     font-size: 1.1rem;
     gap: 4px;
     border-radius: 10px;
-    
-    background: rgba($color: #000000, $alpha: .1);
+
+    background: rgba($color: #000000, $alpha: 0.1);
     border: 2px solid $text-light;
     padding: 10px;
-    
+
     li {
         padding: 5px;
         color: black;
         border: 2px solid $primary-light;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 
         &:first-child {
             border-radius: 10px 0 0 10px;
@@ -239,10 +319,8 @@ nav {
 }
 
 @media (min-width: 767px) {
-    section {
-        margin-top: 20px;
-    }
-    .flex-size {
+
+    .grid-about-me {
         display: grid;
         gap: 80px;
         grid-template-columns: auto 1fr;
@@ -314,10 +392,10 @@ nav {
     }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1200px) {
     body {
         margin: auto;
-        max-width: 1400px;
+        max-width: 1200px;
         min-height: 100vh;
         box-shadow: 1px 1px 5px $text-light;
     }
