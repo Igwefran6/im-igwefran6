@@ -1,5 +1,4 @@
 @import "_variables";
-@import "_mixins";
 @font-face {
     font-family: "kaushan";
     src: url("../../assets/fonts/kaushan/KaushanScript-Regular.otf")
@@ -18,35 +17,44 @@ body {
     position: relative;
 }
 
+//for light mode
 .light {
-    background: $primary-light;
-    color: $text-light;
+    background: $green;
+    color: $light;
 }
 
+//for dark mode
 .dark {
-    background: $primary-dark;
+    background: $dark-brown;
+    color: $dim-light;
+    for-dark-mode{
+      background: $dark-brown !important;
+    }
 }
 
 header {
     position: relative;
 }
 
+//All section
 section {
     padding: 30px;
     margin-top: 20px;
-
     p {
         font-size: 1.1rem;
         margin-top: 25px;
     }
 }
 
-section:first-child{
-  margin-top: 120px;
+//pushing away from header svg
+section:first-child {
+    margin-top: 120px;
 }
 
 nav {
-    @include flex-space-between;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
     min-width: 100%;
     padding: $padding-20;
     button {
@@ -57,13 +65,13 @@ nav {
 
     .logo,
     .menu-btn,
-    .share-page {
+    .toggle-mode {
         padding: $padding-10;
     }
 
     .logo {
         font-size: 1.5rem;
-        color: $text-dark-light;
+        color: $light-dark;
         pointer-events: none;
         font-family: kaushan;
     }
@@ -75,20 +83,20 @@ nav {
         transform: translateX(50%);
         padding: 0;
         margin: 0;
-        z-index: 99999;
+        z-index: 9;
         ul {
             display: flex;
             list-style-type: none;
             gap: 5px;
-            padding: 5px;
-            background: rgba($color: $text-light, $alpha: 1);
+            padding: $padding-5;
+            background: rgba($color: $light, $alpha: 1);
             border-radius: 10px 10px 0 0;
             li {
-                padding: 10px 20px;
+                padding: $padding-10 20px;
                 border-radius: 10px;
                 font-weight: bold;
-                border: 2px solid $primary-light;
-                color: $text-dark-light;
+                border: 2px solid$green;
+                color: $light-dark;
                 transition: background 0.3s ease-in-out;
             }
         }
@@ -98,26 +106,34 @@ nav {
         bottom: 50%;
         right: 50%;
         transform: translate(400%, 400%);
-        background: $text-light;
+        background: $light;
         border-radius: 10px;
         width: 300px;
         height: fit-content;
         color: white;
         transition: transform 0.5s ease-in-out;
-
+        z-index: 12;
         ul {
             list-style-type: none;
             display: flex;
             flex-direction: column;
             gap: 10px;
             position: relative;
-            li {
-                padding: 10px 20px;
+            li{
+                padding: $padding-10 20px;
                 border-radius: 10px;
                 font-weight: bold;
-                border: 2px solid $primary-light;
-                color: $text-dark-light;
+                border: 2px solid $green;
+                color: $light-dark;
                 transition: background 0.3s ease-in-out;
+                &:hover {
+                    a {
+                        color: #fff !important;
+                    }
+                }
+                a {
+                    color: $light-dark;
+                }
             }
         }
         button {
@@ -125,21 +141,22 @@ nav {
             top: -30px;
             right: 5px;
             background: #777;
-            color: $text-light;
-            padding: 5px;
+            color: $light;
+            padding: $padding-5;
             border-radius: 5px;
             border: 1px solid white;
         }
     }
 }
 
-.share-page {
+.toggle-mode {
     transition: all 0.3s ease-in-out;
+    transform: rotate(-45deg);
 }
 
 .active-button {
-    background: $primary-light;
-    color: $text-light !important;
+    background: $green;
+    color: $light !important;
 }
 
 .menu-btn {
@@ -154,14 +171,15 @@ nav {
     display: block;
 }
 
+//my image
 .igwefran6-image {
     height: 250px;
     width: 250px;
     margin: auto;
     margin-top: 50px;
     border-radius: 50%;
-    border: 2px solid $text-light;
-    outline: 2px solid $text-light;
+    border: 2px solid $light;
+    outline: 2px solid $light;
     outline-offset: 4px;
     img {
         width: 100%;
@@ -177,6 +195,10 @@ nav {
     }
 }
 
+.projects {
+    z-index: 1;
+}
+
 .grid-project {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -188,18 +210,17 @@ nav {
         text-align: center;
         min-height: 250px;
         border-radius: 10px;
-        border: 2px solid $text-light;
+        border: 2px solid $light;
         position: relative;
-        transition: transform .5s ease-in-out;
-        &{
-                  &:hover{
-          transform: translateY(-20px);
-          z-index: 4;
-          transition: all .3s ease-in-out 0s;
-          outline: 2px solid $text-light;
-          outline-offset: 2px;
-        }
-        
+        transition: transform 0.5s ease-in-out;
+        & {
+            &:hover {
+                transform: translateY(-20px);
+                z-index: 4;
+                transition: all 0.3s ease-in-out 0s;
+                outline: 2px solid $light;
+                outline-offset: 2px;
+            }
         }
 
         img {
@@ -211,11 +232,11 @@ nav {
         }
         button {
             position: absolute;
-            padding: 10px 20px;
+            padding: $padding-10 20px;
             font-weight: bold;
-            border: 2px solid $text-light;
-            background: $primary-light;
-            color: $text-light;
+            border: 2px solid $light;
+            background: $green;
+            color: $light;
             transition: padding 0.3s ease-in-out;
             &:hover {
                 padding: 16px 32px;
@@ -239,64 +260,66 @@ nav {
             text-decoration-color: transparent;
             transition: all 0.3s ease-in-out;
             font-size: 1rem;
-            background: rgba(#000, .4);
-            padding: 5px 10px;
+            background: rgba(#000, 0.4);
+            padding: $padding-5 10px;
             &:hover {
-                text-decoration-color: $text-light;
+                text-decoration-color: $light;
             }
         }
     }
 }
 
-a{
-  text-decoration: none;
-  color: #fff;
+a {
+    text-decoration: none;
+    color: #fff;
 }
 
-form{
-  margin-top: 20px;
-  margin-bottom: 40px;
-  z-index: 2;
-  padding: 20px;
-  background: grey;
-  border-radius: 10px;
-  border: 2px solid $text-light;
-  input, textarea{
-    width: 100%;
-    padding: 5px;
-    background: $text-light;
-    border: none;
-    border-radius: 5px 5px 0 0;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: rgba($color: $text-dark-light, $alpha: .8);
-    
-  }
-  
-  label{
-    font-weight: bold;
-    margin: 6px 0 2px 0;
-    display: inline-block;
-    span{
-      color: red;
-      font-size: 1rem;
-      margin-left: 4px;
-      display: inline-block;
+form {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    z-index: 2;
+    padding: $padding-20;
+    background: grey;
+    border-radius: 10px;
+    border: 2px solid $light;
+    input,
+    textarea {
+        width: 100%;
+        padding: $padding-5;
+        background: $light;
+        border: none;
+        border-radius: 5px 5px 0 0;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: rgba($color: $light-dark, $alpha: 0.8);
     }
-  }
-  label:first-child{
-    margin-top: 0;
-  }
-  .btn{
-    border: 2px solid $text-light;
-    width: 60%;
-    padding: 7px 14px;
-    background: $primary-light;
-    color: $text-light;
-    margin-top: 8px;
-    border-radius: 0 0 5px 5px;
-  }
+
+    label {
+        font-weight: bold;
+        margin: 6px 0 2px 0;
+        display: inline-block;
+        span {
+            color: red;
+            font-size: 1rem;
+            margin-left: 4px;
+            display: inline-block;
+        }
+    }
+    label:first-child {
+        margin-top: 0;
+    }
+    .btn {
+        border: 2px solid $light;
+        width: 60%;
+        padding: 7px 14px;
+        background: $green;
+        color: $light;
+        margin-top: 8px;
+        border-radius: 0 0 5px 5px;
+    }
 }
+
+//footer dark wave
 .wave-footer {
     position: absolute;
     bottom: 0;
@@ -321,82 +344,86 @@ form{
 
 //code from https://codepen.io/nxworld/pen/zwGpXr
 
-.loading, .send-text {
-  font-size: 16px;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  color: #fff;
-  span {
-    display: inline-block;
-    margin: 0 -.05em;
-  }
+.loading,
+.send-text {
+    font-size: 16px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    color: #fff;
+    span {
+        display: inline-block;
+        margin: 0 -0.05em;
+    }
 }
 
 //code from https://codepen.io/nxworld/pen/zwGpXr
-
+// modified by me
 .loading07 {
-  span {
-    position: relative;
-    color: rgba(#000, .2);
-    &::after {
-      position: absolute;
-      top: 0;
-      left: 0;
-      content: attr(data-text);
-      color: #fff;
-      opacity: 0;
-      transform: scale(1.5);
-      animation: loading07 3s infinite;
-      //animation-play-state: paused;
+    span {
+        position: relative;
+        color: rgba(#000, 0.2);
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: attr(data-text);
+            color: #fff;
+            opacity: 0;
+            transform: scale(1.5);
+            animation: loading07 3s infinite;
+            //animation-play-state: paused;
+        }
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i + 1})::after {
+                animation-delay: #{$i * 0.1}s;
+            }
+        }
     }
-    @for $i from 1 through 6 {
-      &:nth-child(#{$i+1})::after {
-        animation-delay: #{$i*.1}s;
-      }
-    }
-  }
 }
 
 @keyframes loading07 {
-  0%, 75%, 100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
-  25%, 50% {
-    transform: scale(1);
-    opacity: 1;
-  }
+    0%,
+    75%,
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+    25%,
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-.hide{
-  display: none;
+.hide {
+    display: none;
 }
 
-.success, .failure{
-  position: fixed;
-  bottom: -100px;
-  right: 0;
-  width: 100%;
-  background: seagreen;
-  padding: 10px;
-  transition: all .5s;
-  z-index: 99999;
-}
-
-.failure{
-  background: tomato;
-  span{
-    position: absolute;
-    top: -20px;
-    right: 2px;
+.success,
+.failure {
+    position: fixed;
+    bottom: -100px;
+    right: 0;
+    width: 100%;
     background: seagreen;
-    padding: 2px 4px;
-    font-size: 14px;
-    border-radius: 2px;
-  }
+    padding: $padding-10;
+    transition: all 0.5s;
+    z-index: 10;
 }
 
-/** For mobile devices **/
+.failure {
+    background: tomato;
+    span {
+        position: absolute;
+        top: -20px;
+        right: 2px;
+        background: seagreen;
+        padding: 2px 4px;
+        font-size: 14px;
+        border-radius: 2px;
+    }
+}
+
 @media (max-width: 767px) {
     .wave-footer svg {
         width: calc(154% + 1.3px);
@@ -441,13 +468,13 @@ form{
     border-radius: 10px;
 
     background: rgba($color: #000000, $alpha: 0.1);
-    border: 2px solid $text-light;
-    padding: 10px;
+    border: 2px solid $light;
+    padding: $padding-10;
 
     li {
-        padding: 5px;
+        padding: $padding-5;
         color: black;
-        border: 2px solid $primary-light;
+        border: 2px solid $green;
         transition: all 0.3s ease-in-out;
 
         &:first-child {
@@ -475,19 +502,16 @@ form{
 }
 
 @media (min-width: 767px) {
-
     .grid-about-me {
         display: grid;
         gap: 80px;
         grid-template-columns: auto 1fr;
-        
     }
 
     .about-me-text {
-        border-right: 2px solid $text-light;
+        border-right: 2px solid $light;
         padding-right: 5px;
         padding-right: 20px;
-        
     }
     .menu-desktop {
         border: none;
@@ -518,8 +542,8 @@ form{
             position: absolute;
             left: -35px;
             bottom: -35px;
-            border: 2px solid $text-light;
-            outline: 2px solid $text-light;
+            border: 2px solid $light;
+            outline: 2px solid $light;
             outline-offset: 4px;
         }
         .img-emoji-2 {
@@ -530,8 +554,8 @@ form{
             position: absolute;
             left: -65px;
             top: 20px;
-            border: 2px solid $text-light;
-            outline: 2px solid $text-light;
+            border: 2px solid $light;
+            outline: 2px solid $light;
             outline-offset: 4px;
         }
         .img-emoji-3 {
@@ -542,24 +566,25 @@ form{
             position: absolute;
             right: -5px;
             top: -5px;
-            border: 2px solid $text-light;
-            outline: 2px solid $text-light;
+            border: 2px solid $light;
+            outline: 2px solid $light;
             outline-offset: 4px;
         }
     }
     .menu-dialog {
         display: none;
     }
-    form{
-      width: 400px;
+    form {
+        width: 400px;
     }
 }
 
+// adding max width for screens above 1200px wide
 @media (min-width: 1200px) {
     body {
         margin: auto;
         max-width: 1200px;
         min-height: 100vh;
-        box-shadow: 1px 1px 5px $text-light;
+        box-shadow: 1px 1px 5px $light;
     }
 }
