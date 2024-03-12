@@ -5,11 +5,14 @@ let closeBtn = document.querySelector("#close-btn");
 let scrollToPage = document.querySelectorAll(".scroll-to ul li");
 let menuDialogList = document.querySelectorAll(".menu-dialog ul li");
 let desktopMenus = document.querySelectorAll(".desktop-menus li");
+let mainSections = document.querySelectorAll(".about, .projects, .contact");
 let menuOpened = false;
 let moveRight = "-400%, 400%";
 let moveLeft = "400%, 400%";
 let movement = moveRight;
 let moved = false;
+
+console.log(mainSections);
 
 const inputElement = document.querySelectorAll("input");
 
@@ -42,7 +45,22 @@ function activateBtn(item, myItem) {
             event.classList.remove("active-button");
         });
         button.target.classList.add("active-button");
+        scrollToTarget(button)
     });
+}
+
+function scrollToTarget(button) {
+  let buttonText = button.target.textContent.trim()
+  console.log(buttonText);
+  if (buttonText === "About") {
+    mainSections[0].scrollIntoView({ behavior: 'smooth' });
+  }
+  if (buttonText === "Projects") {
+    mainSections[1].scrollIntoView({ behavior: 'smooth' });
+  }
+  if (buttonText === "Contact") {
+    mainSections[2].scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 sharePage.addEventListener("click", () => {
@@ -151,3 +169,5 @@ let closeFailureBox = (window.onload = function () {
             );
         });
 });
+
+
