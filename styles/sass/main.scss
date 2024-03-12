@@ -15,6 +15,7 @@
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     width: auto;
+    position: relative;
 }
 
 .light {
@@ -246,6 +247,7 @@ nav {
 
 form{
   margin-top: 20px;
+  margin-bottom: 40px;
   z-index: 2;
   padding: 20px;
   background: grey;
@@ -262,6 +264,7 @@ form{
     color: rgba($color: $text-dark-light, $alpha: .8);
     
   }
+  
   label{
     font-weight: bold;
     margin: 6px 0 2px 0;
@@ -286,10 +289,34 @@ form{
     border-radius: 0 0 5px 5px;
   }
 }
+.wave-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    z-index: -1;
+}
 
-footer{
-  background: rgba($color: #222222, $alpha: 1);
-  min-height: 80px;
+.wave-footer svg {
+    position: relative;
+    display: block;
+    width: calc(171% + 1.3px);
+    height: 500px;
+}
+
+.wave-footer .shape-fill {
+    fill: #000000;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .wave-footer svg {
+        width: calc(154% + 1.3px);
+        height: 102px;
+    }
 }
 
 .wave {
