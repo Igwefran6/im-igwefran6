@@ -311,6 +311,82 @@ form{
     fill: #000000;
 }
 
+//code from https://codepen.io/nxworld/pen/zwGpXr
+
+.loading, .send-text {
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #fff;
+  span {
+    display: inline-block;
+    margin: 0 -.05em;
+  }
+}
+
+//code from https://codepen.io/nxworld/pen/zwGpXr
+
+.loading07 {
+  span {
+    position: relative;
+    color: rgba(#000, .2);
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: attr(data-text);
+      color: #fff;
+      opacity: 0;
+      transform: scale(1.5);
+      animation: loading07 3s infinite;
+      //animation-play-state: paused;
+    }
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i+1})::after {
+        animation-delay: #{$i*.1}s;
+      }
+    }
+  }
+}
+
+@keyframes loading07 {
+  0%, 75%, 100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  25%, 50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.hide{
+  display: none;
+}
+
+.success, .failure{
+  position: fixed;
+  bottom: -100px;
+  right: 0;
+  width: 100%;
+  background: seagreen;
+  padding: 10px;
+  transition: all .5s;
+}
+
+.failure{
+  background: tomato;
+  span{
+    position: absolute;
+    top: -20px;
+    right: 2px;
+    background: seagreen;
+    padding: 2px 4px;
+    font-size: 14px;
+    border-radius: 2px;
+  }
+}
+
 /** For mobile devices **/
 @media (max-width: 767px) {
     .wave-footer svg {

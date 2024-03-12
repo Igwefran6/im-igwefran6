@@ -107,19 +107,47 @@ msg.addEventListener("input", event => {
     });
 })();
 
-window.onload = function () {
+let sending = document.querySelector(".loading07");
+let send = document.querySelector(".send-text");
+let failure = document.querySelector(".failure");
+let success = document.querySelector(".success");
+let closeFailureBox = (window.onload = function () {
     document
         .getElementById("contact-form")
         .addEventListener("submit", function (event) {
             event.preventDefault();
+            send.classList.add("hide");
+            sending.classList.remove("hide");
             // these IDs from the previous steps
             emailjs.sendForm("service_xvl55ql", "template_zrohmna", this).then(
                 () => {
                     console.log("SUCCESS!");
+                    setTimeout(function () {
+                        sending.classList.add("hide");
+                        send.classList.remove("hide");
+                        success.style.bottom = "0";
+                        setTimeout(function () {
+                            success.style.bottom = "-100px";
+                        }, 5000);
+                    }, 1000);
                 },
                 error => {
                     console.log("FAILED...", error);
+                    setTimeout(function () {
+                        sending.classList.add("hide");
+                        send.classList.remove("hide");
+                        failure.style.bottom = "0";
+                        let setFailTimeOut = setTimeout(function () {
+                            failure.style.bottom = "-100px";
+                        }, 20000);
+                        document
+                            .querySelector(".close-failure-box")
+                            .addEventListener("click", () => {
+                                failure.style.bottom = "-100px";
+                                clearTimeout(setFailTimeOut);
+                            });
+                    }, 1000);
                 }
             );
         });
-};
+});
